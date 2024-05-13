@@ -4,7 +4,23 @@
 
 The **Student Solutions Tracking website** is a platform designed to help students track how many questions solved, teachers communicate with students, and track their progress. It provides an admin panel for teachers to perform various tasks, including adding, editing, and removing students. Additionally, teachers can send messages to individual student.
 
-**Live Version** : [https://sehitgokselkoc.org/]
+## Deployment
+
+Visit the live website: [Student Solutions Tracking](https://sehitgokselkoc.org/)
+
+## Screenshots
+
+![Admin Panel](/screenshots/admin.png)
+_Screenshot of the admin panel where teachers manage student records._
+
+![Login Page](/screenshots/login.png)
+_Screenshot of the admin panel where teachers manage student records._
+
+![Student Dashboard](/screenshots/student-tracker.png)
+_Screenshot of the student dashboard displaying solutions and messages._
+
+![Student Dashboard](/screenshots/student-tracker2.png)
+_Screenshot of the student dashboard in light mode_
 
 ### Features
 
