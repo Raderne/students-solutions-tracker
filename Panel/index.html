@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v3.0.6/css/line.css"
+    />
+
+    <script
+      src="https://kit.fontawesome.com/2ff2425460.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <aside
+      class="sidebar position-fixed top-0 left-0 overflow-auto h-100 float-left"
+      id="show-side-navigation1"
+    >
+      <i
+        class="uil-bars close-aside d-md-none d-lg-none"
+        data-close="show-side-navigation1"
+      ></i>
+      <div
+        class="sidebar-header d-flex justify-content-center align-items-center px-3 py-4"
+      >
+        <div class="">
+          <h5 class="mb-0" style="color: white">Admin Panel</h5>
+        </div>
+      </div>
+
+      <ul class="categories list-unstyled">
+        <li class="">
+          <a href="#">
+            <i class="uil-folder"></i>
+            Dashboard
+          </a>
+        </li>
+        <li class="">
+          <a href="addStudents.html">
+            <i class="uil-user"></i>
+            Öğrenci Ekle
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+    <section id="wrapper">
+      <nav class="navbar navbar-expand-md">
+        <div class="container-fluid mx-2">
+          <div class="navbar-header">
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#toggle-navbar"
+              aria-controls="toggle-navbar"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <i class="uil-bars text-white"></i>
+            </button>
+            <a class="navbar-brand" href="#"
+              ><span class="main-color">Siber</span> Isparta Gençlik Merkezi</a
+            >
+          </div>
+          <div class="collapse navbar-collapse" id="toggle-navbar">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link logout-btn" href="#">
+                  Çıkış yap <i class="uil-sign-out-alt"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i
+                    data-show="show-side-navigation1"
+                    class="uil-bars show-side-btn"
+                  ></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div class="p-4">
+        <div class="welcome">
+          <div class="content rounded-3 p-3">
+            <h1 class="fs-3">Hoşgeldiniz, Admin!</h1>
+            <p class="mb-0">Bu panelde öğrencilerinizi yönetebilirsiniz.</p>
+          </div>
+        </div>
+
+        <section class="statistics mt-4">
+          <div class="row students-container">
+            <div class="all-students-title">
+              <h1>Tüm Öğrencilerimiz</h1>
+              <div class="filters">
+                <select id="class-filter">
+                  <option value="Hepsi">Sınıflar</option>
+                  <option value="4.Sınıf">4.Sınıf</option>
+                  <option value="5.Sınıf">5.Sınıf</option>
+                  <option value="6.Sınıf">6.Sınıf</option>
+                  <option value="7.Sınıf">7.Sınıf</option>
+                  <option value="8.Sınıf">8.Sınıf</option>
+                </select>
+
+                <select id="branch-filter">
+                  <option value="Hepsi">Şubeler</option>
+                  <option value="Şube A">Şube A</option>
+                  <option value="Şube B">Şube B</option>
+                  <option value="Şube C">Şube C</option>
+                  <option value="Şube D">Şube D</option>
+                  <option value="Şube E">Şube E</option>
+                  <option value="Şube F">Şube F</option>
+                  <option value="Şube G">Şube G</option>
+                </select>
+              </div>
+            </div>
+            <div id="allStudents" class="content"></div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <script src="scriptAdmin.js"></script>
+    <!-- Jquery -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Bootstrap JS -->
+    <script type="module" src="database.js"></script>
+  </body>
+</html>

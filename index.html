@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giriş Yap</title>
+    <link rel="stylesheet" href="./assets/styles/style.css" />
+  </head>
+  <body>
+    <div class="form-container">
+      <div class="form">
+        <h1>Giriş Yap</h1>
+
+        <div>
+          <label for="TCNO">TCNO</label>
+          <input
+            type="text"
+            id="TCNO"
+            name="TCNO"
+            placeholder="TCNO"
+            required
+            pattern="[0-9]*"
+          />
+        </div>
+
+        <div>
+          <label for="password"> Öğrenci No </label>
+          <input
+            type="password"
+            id="studentNo"
+            name="password"
+            placeholder="Öğrenci No"
+            required
+            pattern="[0-9]*"
+          />
+        </div>
+
+        <button type="submit" id="login">Giriş Yap</button>
+      </div>
+      <div class="image-container">
+        <img src="./assets/images/login.png" />
+      </div>
+    </div>
+
+    <script type="module" src="firebase/login.js"></script>
+    <script type="module" src="firebase/auth.js"></script>
+  </body>
+</html>

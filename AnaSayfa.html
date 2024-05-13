@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Siber Isparta Gençlik Merkezi</title>
+    <link rel="stylesheet" href="./assets/styles/styles4.css" />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/2ff2425460.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <nav>
+      <div class="logo-name">
+        <span class="logo_name"> Ad Soyad </span>
+        <span class="logo_subtitle">Class 3</span>
+      </div>
+      <div class="menu-items">
+        <ul class="nav-links" id="module-links">
+          <!-- <li>
+            <span class="link-name"> Matematik </span>
+          </li> -->
+        </ul>
+
+        <ul class="logout-mod">
+          <li>
+            <a href="index.html" id="logout-btn">
+              <i class="fa-solid fa-right-from-bracket"></i>
+              <span class="link-name"> Çıkış </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="main" style="margin-left: 250px; width: calc(100% - 250px)">
+      <div class="top">
+        <i
+          class="fa-solid fa-bars sidebar-toggle"
+          style="position: absolute; left: 25px"
+        ></i>
+        <div class="navigation">
+          <ul>
+            <!-- messages from teachers -->
+            <li class="messagesBox">
+              <i class="fa-solid fa-envelope"></i>
+              <span class="link-name"> Mesajlar </span>
+              <span class="badge"> 3 </span>
+
+              <div class="messages">
+                <!-- <div class="message">
+                  <div class="message-header">
+                    <span class="message-title"> Mesaj Başlığı </span>
+                    <span class="message-time"> 12:00 </span>
+                  </div>
+                  <div class="message-content">
+                    <p>Mesaj İçeriği</p>
+                  </div>
+                </div> -->
+              </div>
+            </li>
+            <li class="mode">
+              <a href="#" style="color: var(--black-light-color)">
+                <i class="fa-solid fa-moon"></i>
+                <span class="link-name"> karanlık mod </span>
+              </a>
+              <div class="mode-toggle">
+                <span class="switch"> </span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!--<img src="images/profile.jpg" alt="">-->
+      </div>
+      <div class="activity">
+        <div class="add-activity">
+          <div class="title">
+            <h2 class="text" id="moduleName">Module Name</h2>
+            <button class="add" id="add">
+              <i class="fa-solid fa-plus"></i>
+              <span class="add-text">Ekle</span>
+            </button>
+          </div>
+          <div class="separator"></div>
+          <div class="modules-data"></div>
+        </div>
+        <div class="leaderboard">
+          <!-- refresh icon -->
+          <button id="refresh">
+            <i class="fa-solid fa-refresh"></i>
+          </button>
+          <h2 class="leaderboard-title">Liderlik Tablosu</h2>
+          <div class="leaderboard-data">
+            <p class="loader">
+              <i class="fa-solid fa-spinner"></i>
+            </p>
+          </div>
+          <div class="separator"></div>
+          <div class="title">
+            <h2 class="text" id="subeName">Şube</h2>
+          </div>
+          <div class="leaderbord-branch">
+            <p class="loader">
+              <i class="fa-solid fa-spinner"></i>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+      type="module"
+    ></script>
+    <script type="module" src="firebase/handleMessages.js"></script>
+    <script type="module" src="firebase/modules.js"></script>
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>
