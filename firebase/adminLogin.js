@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         return { success: false, message: "Lütfen tüm alanları doldurunuz" };
       }
 
-      const response = await loginTeachersAdmin(username, lastName, tcNo);
+      const response = await loginTeachersAdmin(tcNo);
 
       return response;
     } catch (error) {
@@ -35,8 +35,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             <i class="fa-solid fa-spinner loader"></i>
         `;
 
-    const username = usernameInput.value.trim();
-    const lastName = lastNameInput.value.trim();
+    const username = usernameInput.value.trim().toUpperCase();
+    const lastName = lastNameInput.value.trim().toUpperCase();
     const tcNo = tcNoInput.value.trim();
 
     loginButton.innerHTML = loader;

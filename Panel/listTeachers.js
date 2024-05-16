@@ -1,8 +1,10 @@
 import { deleteTeacher, getAllTeachers } from "../firebase/auth.js";
 
+const currentTeacher = JSON.parse(localStorage.getItem("teacher"));
+
 document.addEventListener("DOMContentLoaded", async () => {
   const allTeachers = document.getElementById("allTeachers");
-  const teachers = await getAllTeachers();
+  const teachers = await getAllTeachers(currentTeacher?.TCNO);
 
   const renderUsers = async (users) => {
     allTeachers.innerHTML = "";
@@ -15,8 +17,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       allTeachers.innerHTML += `
         <div class="teacher">
         <div class="teacher-info">
-        <h5 style="width: 30%">${user?.username} ${user?.lastName}</h5>
-            <p style="width: 25%">Tc No: ${user?.TCNO}</p>
+            <h5 style="width: 30%">${user?.username} ${user?.lastName}</h5>
+            <p style="width: 30%">Tc No: ${user?.TCNO}</p>
         </div>
         <div class="teacher-actions">
         <!-- <button class="edit-teacher" data-tcno="${user?.TCNO}">Düzenle</button> -->
@@ -26,8 +28,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     `;
     });
 
-    const deleteStudentBtn = document.querySelectorAll(".delete-student");
-    deleteStudentBtn.forEach((btn) => {
+    const deleteTeacherBtn = document.querySelectorAll(".delete-teacher");
+    deleteTeacherBtn.forEach((btn) => {
       btn.addEventListener("click", async (e) => {
         let loader = `
       <i class="fa-solid fa-spinner loader"></i>
@@ -36,6 +38,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const id = e.target.getAttribute("data-tcno");
         try {
           await deleteTeacher(id);
+          e.target.parentElement.parentElement.remove();
         } catch (error) {
           console.log(error.message);
           loading = false;
@@ -43,7 +46,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       });
     });
 
-    // const editStudentBtn = document.querySelectorAll(".edit-student");
+    // const editStudentBtn = document.querySelectorAll(".edit-teacher");
     // editStudentBtn.forEach((btn) => {
     //   btn.addEventListener("click", async (e) => {
     //     const id = e.target.getAttribute("data-tcno");

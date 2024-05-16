@@ -13,14 +13,14 @@ if (admin === null && teacher === null) {
   window.location.href = "../index.html";
 }
 
-const deleteStudent = async (id, users) => {
+const deleteStudent = async (id, users, container) => {
   const user = users.find((user) => user.tcNo === id);
 
   try {
     await deleteUser(user);
 
     const newUsers = users.filter((user) => user.tcNo !== id);
-    renderUsers(newUsers);
+    renderUsers(newUsers, container);
   } catch (error) {
     console.log(error.message);
   }
@@ -74,15 +74,15 @@ const addMessageModal = async (tcNo, users) => {
   });
 };
 
-const renderUsers = async (users, allStudents) => {
-  allStudents.innerHTML = "";
+const renderUsers = async (users, container) => {
+  container.innerHTML = "";
 
   users = users.sort((a, b) => {
     return a.name.localeCompare(b.name);
   });
 
   users.forEach((user) => {
-    allStudents.innerHTML += `
+    container.innerHTML += `
   <div class="student">
   <div class="student-info">
   <h5 style="width: 30%">${user?.name} ${user?.surname}</h5>
@@ -111,7 +111,7 @@ const renderUsers = async (users, allStudents) => {
       e.target.innerHTML = loader;
       const id = e.target.getAttribute("data-tcno");
       try {
-        await deleteStudent(id, users);
+        await deleteStudent(id, users, container);
       } catch (error) {
         console.log(error.message);
         loading = false;
@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   classFilter.addEventListener("change", async (e) => {
     if (e.target.selectedIndex === 0) {
       branchFilter.selectedIndex = 0;
-      return renderUsers(users);
+      return renderUsers(users, allStudents);
     }
 
     branchFilter.selectedIndex = 0;
@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       (user) => user.className === e.target.value
     );
 
-    return renderUsers(filteredUsers);
+    return renderUsers(filteredUsers, allStudents);
   });
 
   branchFilter.addEventListener("change", async (e) => {
@@ -167,7 +167,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         (user) => user.branchName === e.target.value
       );
 
-      return renderUsers(filteredUsers);
+      return renderUsers(filteredUsers, allStudents);
     } else {
       const filteredUsers = users.filter(
         (user) =>
@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           user.className === classFilter.value
       );
 
-      return renderUsers(filteredUsers);
+      return renderUsers(filteredUsers, allStudents);
     }
   });
 });

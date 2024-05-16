@@ -32,7 +32,7 @@ export const createAdminUser = async (username, lastName, TCNO) => {
   }
 };
 
-export const loginTeachersAdmin = async (username, lastName, tcNo) => {
+export const loginTeachersAdmin = async ( tcNo) => {
   try {
     const docRef = doc(db, "teachers", tcNo);
     const docSnap = await getDoc(docRef);
@@ -43,8 +43,6 @@ export const loginTeachersAdmin = async (username, lastName, tcNo) => {
 
     const user = docSnap.data();
     if (
-      user?.lastName !== lastName ||
-      user?.username !== username ||
       user?.TCNO !== tcNo
     ) {
       return { success: false, message: "admin adı veya admin şifre yanlış!" };
@@ -196,7 +194,7 @@ export const deleteUser = async (user) => {
   }
 };
 
-export const getAllTeachers = async () => {
+export const getAllTeachers = async (tcno) => {
   try {
     const docRef = collection(db, "teachers");
     const docSnap = await getDocs(docRef);
@@ -204,7 +202,8 @@ export const getAllTeachers = async () => {
     let teachers = [];
 
     docSnap.forEach((doc) => {
-      teachers.push(doc.data());
+      if (doc.id !== tcno)
+        teachers.push(doc.data());
     });
 
     return teachers;
@@ -216,10 +215,14 @@ export const getAllTeachers = async () => {
 export const deleteTeacher = async (tcNo) => {
   try {
     const docRef = doc(db, "teachers", tcNo);
-    if (!docRef.exists()) {
+    const docSnap = await getDoc(docRef);
+
+    if (!docSnap.exists()) {
       return { success: false, message: "Öğretmen bulunamadı!" };
     }
+
     await deleteDoc(docRef);
+
     return { success: true };
   } catch (error) {
     console.log("deleteTeacher", error.message);

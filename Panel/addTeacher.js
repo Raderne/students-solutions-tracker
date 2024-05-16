@@ -9,7 +9,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   const addTeacher = async (name, surname, tcNo) => {
     try {
       if (!name || !surname || !tcNo) {
-        return { success: false, message: "Lütfen tüm alanları doldurunuz" };
+        return {
+          success: false,
+          message: "Lütfen tüm alanları doldurunuz ve boşluk bırakmayınız",
+        };
       }
 
       const response = await createAdminUser(name, surname, tcNo);
