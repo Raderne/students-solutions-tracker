@@ -74,7 +74,7 @@ const addMessageModal = async (tcNo, users) => {
   });
 };
 
-const renderUsers = async (users) => {
+const renderUsers = async (users, allStudents) => {
   allStudents.innerHTML = "";
 
   users = users.sort((a, b) => {
@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const branchFilter = document.getElementById("branch-filter");
 
   const users = await getAllUsers();
-  renderUsers(users);
+  renderUsers(users, allStudents);
 
   classFilter.addEventListener("change", async (e) => {
     if (e.target.selectedIndex === 0) {

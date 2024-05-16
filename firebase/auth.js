@@ -196,6 +196,36 @@ export const deleteUser = async (user) => {
   }
 };
 
+export const getAllTeachers = async () => {
+  try {
+    const docRef = collection(db, "teachers");
+    const docSnap = await getDocs(docRef);
+
+    let teachers = [];
+
+    docSnap.forEach((doc) => {
+      teachers.push(doc.data());
+    });
+
+    return teachers;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export const deleteTeacher = async (tcNo) => {
+  try {
+    const docRef = doc(db, "teachers", tcNo);
+    if (!docRef.exists()) {
+      return { success: false, message: "Öğretmen bulunamadı!" };
+    }
+    await deleteDoc(docRef);
+    return { success: true };
+  } catch (error) {
+    console.log("deleteTeacher", error.message);
+  }
+};
+
 export const getAllUsers = async () => {
   try {
     const docRef = collection(db, "users");

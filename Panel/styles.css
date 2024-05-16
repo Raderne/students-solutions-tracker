@@ -455,19 +455,22 @@ select {
   display: none;
 }
 
-#allStudents {
+#allStudents,
+#allTeachers {
   height: 50vh;
   overflow-y: auto;
 }
 
-#allStudents .student {
+#allStudents .student,
+#allTeachers .teacher {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 7px;
 }
 
-#allStudents .student .student-info {
+#allStudents .student .student-info,
+#allTeachers .teacher .teacher-info {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -478,11 +481,13 @@ select {
   margin: 5px 0 !important;
 }
 
-#allStudents .student .student-info p {
+#allStudents .student .student-info p,
+#allTeachers .teacher .teacher-info p {
   margin-bottom: 0 !important;
 }
 
-#allStudents .student .student-actions {
+#allStudents .student .student-actions,
+#allTeachers .teacher .teacher-actions{
   margin-left: 15px;
   display: flex;
   align-items: center;
@@ -490,7 +495,9 @@ select {
 }
 
 #allStudents .student .student-actions .edit-student,
-#allStudents .student .student-actions .delete-student {
+#allStudents .student .student-actions .delete-student,
+#allTeachers .teacher .teacher-actions .edit-teacher,
+#allTeachers .teacher .teacher-actions .delete-teacher{
   all: unset;
   color: white;
   padding: 5px 10px;
@@ -498,11 +505,13 @@ select {
   cursor: pointer;
 }
 
-#allStudents .student .student-actions .edit-student {
+#allStudents .student .student-actions .edit-student,
+#allTeachers .teacher .teacher-actions .edit-teacher{
   background-color: #42e848;
 }
 
-#allStudents .student .student-actions .delete-student {
+#allStudents .student .student-actions .delete-student,
+#allTeachers .teacher .teacher-actions .delete-teacher{
   background-color: #e84f49;
 }
 
