@@ -1,11 +1,5 @@
 import { loginAdmin, loginUser } from "./auth.js";
 
-const admin = JSON.parse(localStorage.getItem("admin"));
-
-if (admin) {
-  window.location.href = "../Panel/index.html";
-}
-
 document.addEventListener("DOMContentLoaded", () => {
   const tcNoInput = document.getElementById("TCNO");
   const studentNoInput = document.getElementById("studentNo");

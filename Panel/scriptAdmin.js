@@ -1,8 +1,9 @@
 "use strict";
 
 const admin = JSON.parse(localStorage.getItem("admin"));
+const teacher = JSON.parse(localStorage.getItem("teacher"));
 
-if (admin === null) {
+if (admin === null && teacher === null) {
   window.location.href = "../index.html";
 }
 
@@ -53,6 +54,7 @@ $(".sidebar .close-aside").addEventListener("click", function () {
 
 logoutBtn.addEventListener("click", () => {
   localStorage.removeItem("user");
+  localStorage.removeItem("teacher");
   localStorage.removeItem("admin");
   window.location.href = "../index.html";
 });

@@ -1,8 +1,9 @@
 import { getUser, updateUser } from "../firebase/auth.js";
 
 const admin = JSON.parse(localStorage.getItem("admin"));
+const teacher = JSON.parse(localStorage.getItem("teacher"));
 
-if (admin === null) {
+if (admin === null && teacher === null) {
   window.location.href = "../index.html";
 }
 

@@ -1,8 +1,9 @@
 import { createUser } from "../firebase/auth.js";
 
 const admin = JSON.parse(localStorage.getItem("admin"));
+const teacher = JSON.parse(localStorage.getItem("teacher"));
 
-if (admin === null) {
+if (admin === null && teacher === null) {
   window.location.href = "../index.html";
 }
 
@@ -45,7 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
         studentNo
       );
 
-      console.log(response);
       return response;
     } catch (error) {
       console.log("in index", error.message);

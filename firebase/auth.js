@@ -10,6 +10,54 @@ import {
 
 import { classes, modules as subjects } from "../assets/js/common.js";
 
+export const createAdminUser = async (username, lastName, TCNO) => {
+  try {
+    const docRef = await doc(db, "teachers", TCNO);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      return { success: false, message: "admin zaten var!" };
+    }
+
+    await setDoc(docRef, {
+      username,
+      lastName,
+      TCNO,
+    });
+
+    return { success: true };
+  } catch (error) {
+    console.log(error.message, "createAdminUser");
+    return { success: false, message: error.message };
+  }
+};
+
+export const loginTeachersAdmin = async (username, lastName, tcNo) => {
+  try {
+    const docRef = doc(db, "teachers", tcNo);
+    const docSnap = await getDoc(docRef);
+
+    if (!docSnap.exists()) {
+      return { success: false, message: "admin bulunamadı!" };
+    }
+
+    const user = docSnap.data();
+    if (
+      user?.lastName !== lastName ||
+      user?.username !== username ||
+      user?.TCNO !== tcNo
+    ) {
+      return { success: false, message: "admin adı veya admin şifre yanlış!" };
+    }
+
+    localStorage.setItem("teacher", JSON.stringify(user));
+
+    return { success: true, user };
+  } catch (error) {
+    console.log(error.message, "loginTeachersAdmin");
+  }
+};
+
 export const createUser = async (
   name,
   surname,

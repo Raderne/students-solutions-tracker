@@ -9,43 +9,50 @@
   <body>
     <div class="form-container">
       <div class="form">
-        <h1>Giriş Yap</h1>
+        <h1>Admin Panel</h1>
 
         <div>
-          <label for="TCNO">TCNO</label>
+          <label for="ad">Ad</label>
           <input
             type="text"
-            id="TCNO"
-            name="TCNO"
-            placeholder="TCNO"
+            id="username"
+            name="ad"
+            placeholder="ad"
             required
-            pattern="[0-9]*"
           />
         </div>
 
         <div>
-          <label for="password"> Öğrenci No </label>
+          <label for="lastname">Soyad</label>
+          <input
+            type="text"
+            id="lastName"
+            name="lastname"
+            placeholder="Soyad"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="password"> TC No </label>
           <input
             type="password"
-            id="studentNo"
+            id="TCNO"
             name="password"
-            placeholder="Öğrenci No"
+            placeholder="TC No"
             required
             pattern="[0-9]*"
           />
         </div>
 
         <button type="submit" id="login">Giriş Yap</button>
-
-        <a href="./teachersLogin.html">Öğretmen Girişi</a>
       </div>
-
       <div class="image-container">
         <img src="./assets/images/login.png" />
       </div>
     </div>
 
-    <script type="module" src="firebase/login.js"></script>
+    <script type="module" src="firebase/adminLogin.js"></script>
     <script type="module" src="firebase/auth.js"></script>
   </body>
 </html>

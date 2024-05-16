@@ -6,6 +6,13 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore.js";
 import { db } from "../firebase/firebaseConfig.js";
 
+const admin = JSON.parse(localStorage.getItem("admin"));
+const teacher = JSON.parse(localStorage.getItem("teacher"));
+
+if (admin === null && teacher === null) {
+  window.location.href = "../index.html";
+}
+
 const deleteStudent = async (id, users) => {
   const user = users.find((user) => user.tcNo === id);
 
@@ -31,7 +38,7 @@ const addMessageModal = async (tcNo, users) => {
     <h2>${user?.name} ${user?.surname}'ye mesaj gönder</h2>
     <form>
     <label for="sender">Gönderen:</label>
-    <input type="text" name="sender" id="sender">
+    <input type="text" name="sender" id="sender" value="${teacher?.username} ${teacher?.lastName}" required />
     <label for="message">Mesajınız:</label>
     <textarea name="message" id="message" cols="30" rows="10" required></textarea>
     <button type="submit">Gönder</button>
