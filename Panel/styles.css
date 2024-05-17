@@ -652,3 +652,12 @@ select {
   color: var(--navbar-bg-color);
   border: 2px solid var(--navbar-bg-color);
 }
+
+/* footer */
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  margin-left: var(--sidebar-width);
+}

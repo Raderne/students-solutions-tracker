@@ -557,3 +557,12 @@ nav.close ~ .main .top {
   gap: 10px;
   min-width: 200px;
 }
+
+/* footer */
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  margin-left: var(--sidebar-width);
+}
