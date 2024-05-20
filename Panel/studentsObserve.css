@@ -1,0 +1,306 @@
+:root {
+  --primary-color: #2c0be3;
+  --panel-color: #fff;
+  --text-color: #000;
+  --black-light-color: #707070;
+  --border-color: #e6e5e5;
+  --toggle-color: #8a8585;
+  --box1-color: #4da3ff;
+  --box2-color: #ffe6ac;
+  --box3-color: #e7d1fc;
+  --title-icon-color: #fff;
+  --modal-color: #787d9c;
+  --user-color: #5c9a30;
+
+  --tran-05: all 0.5s ease;
+  --tran-03: all 0.3s ease;
+  --tran-03: all 0.2s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.students-list {
+  height: 85vh;
+  display: flex;
+  padding: 0 20px;
+}
+
+.classes-list {
+  margin-top: 10px;
+  flex-grow: 1;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.students-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: start;
+  justify-content: center;
+}
+.students-cards .class-card {
+  padding: 5px 20px;
+  background-color: black;
+  color: white;
+  font-size: 2rem;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.students-cards .class-card:hover,
+.class-card.active {
+  border-color: #1d1d1d;
+  color: #1d1d1d;
+  background-color: transparent;
+}
+
+/* ================= students ===================== */
+
+.classes-list .display-results {
+  border: 1px solid #1d1d1d;
+  flex-grow: 1;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  align-items: start;
+  overflow-y: auto;
+}
+.classes-list .display-results .students {
+  flex-grow: 1;
+  padding: 5px 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.classes-list .display-results .students .student {
+  display: flex;
+  padding: 5px 20px;
+  border: 1px solid #1d1d1d;
+  border-radius: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.classes-list .display-results .students .student .student-details {
+  background-color: #b6b5b5;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.classes-list .display-results .students .student .total {
+  /* margin-top: 1rem; */
+  font-weight: 700;
+  text-align: end;
+}
+
+.classes-list .display-results .branches {
+  border-left: 1px solid #1d1d1d;
+  height: 100%;
+  min-width: 150px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 !important;
+  padding: 0;
+}
+.classes-list .display-results .branches .branch {
+  font-size: 1.2rem;
+  background-color: #1d1d1d;
+  color: white;
+  padding: 3px 10px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+.classes-list .display-results .branches .branch:hover,
+.classes-list .display-results .branches .branch.active {
+  background-color: transparent;
+  color: #1d1d1d;
+  border-color: #1d1d1d;
+}
+
+.student.winner {
+  background-image: linear-gradient(
+    to right,
+    #ba6093,
+    #c777b9,
+    #ba83ca,
+    #aa8fd8,
+    #9a9ae1,
+    #8aa7ec,
+    #79b3f4,
+    #69bff8,
+    #50c1ea,
+    #39bcd6,
+    #42d0da,
+    #4dc7bf
+  ) !important;
+
+  color: white;
+}
+.student.winner .student-details {
+  background-color: #0e0e0e !important;
+}
+
+/* ======================= leader board ================================== */
+
+.students-leader {
+  position: relative;
+  margin-right: 10px;
+  margin-top: 10px;
+  width: 500px;
+  height: 100%;
+  border: 1px solid var(--black-light-color);
+  padding: 10px;
+  border-radius: 10px;
+  color: var(--text-color);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+}
+
+.students-leader .leaderboard-data {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.students-leader .leaderboard-data::-webkit-scrollbar {
+  width: 2px;
+}
+
+.students-leader .leaderboard-data::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 5px;
+}
+
+.students-leader .leaderboard-data::-webkit-scrollbar-track {
+  background-color: var(--panel-color);
+}
+
+.students-leader .leaderboard-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  margin-bottom: 8px;
+  border-radius: 5px;
+  background-color: var(--box3-color);
+  color: var(--text-color);
+  font-size: 2rem;
+  gap: 2rem;
+}
+.students-leader .leaderboard-item > div {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  text-align: start;
+  flex: 1;
+  font-size: 1rem;
+}
+
+.students-leader .leaderbord-branch {
+  overflow-y: auto;
+  height: 250px;
+}
+
+.students-leader #refresh {
+  background-color: var(--modal-color);
+  color: var(--panel-color);
+  padding: 6px 15px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 10px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-family: initial;
+}
+
+.students-leader #refresh:disabled {
+  background-color: var(--black-light-color);
+  color: var(--panel-color);
+  cursor: not-allowed;
+}
+
+/* ====================== student modal =========================000 */
+.modal-wrapper {
+  /* display: none; */
+  background-color: #1d1d1d73;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999999999999;
+  overflow: hidden;
+}
+#student-modal {
+  /* top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+  min-width: 50vw;
+  height: 80vh;
+  background-color: white;
+  border: 1px solid #1d1d1d;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 20px;
+  position: relative;
+}
+#student-modal .close {
+  position: absolute;
+  right: 40px;
+  top: 20px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.modal-wrapper .all-student-data {
+  width: 100%;
+  height: 80%;
+  padding: 10px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-wrapper .all-student-data > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #1d1d1d;
+  padding: 8px 5px;
+  border-radius: 10px;
+  font-weight: 600;
+}

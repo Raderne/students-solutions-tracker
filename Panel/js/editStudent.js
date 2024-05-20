@@ -1,4 +1,4 @@
-import { getUser, updateUser } from "../firebase/auth.js";
+import { getUser, updateUser } from "../../firebase/auth.js";
 
 const admin = JSON.parse(localStorage.getItem("admin"));
 const teacher = JSON.parse(localStorage.getItem("teacher"));

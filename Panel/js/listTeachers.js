@@ -1,4 +1,4 @@
-import { deleteTeacher, getAllTeachers } from "../firebase/auth.js";
+import { deleteTeacher, getAllTeachers } from "../../firebase/auth.js";
 
 const currentTeacher = JSON.parse(localStorage.getItem("teacher"));
 

@@ -1,4 +1,4 @@
-import { createUser } from "../firebase/auth.js";
+import { createUser } from "../../firebase/auth.js";
 
 const admin = JSON.parse(localStorage.getItem("admin"));
 const teacher = JSON.parse(localStorage.getItem("teacher"));

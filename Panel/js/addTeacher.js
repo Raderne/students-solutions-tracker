@@ -1,4 +1,4 @@
-import { createAdminUser } from "../firebase/auth.js";
+import { createAdminUser } from "../../firebase/auth.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const nameInput = document.getElementById("name");

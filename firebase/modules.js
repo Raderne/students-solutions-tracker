@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     span.addEventListener("click", async () => {
       if (selectedModule === module) return;
+
       selectedModule = module;
       moduleName.textContent = module;
 
@@ -54,8 +55,12 @@ const addModal = (addBtn) => {
   title.textContent = selectedModule + "'e Ekle";
 
   const subjectName = document.createElement("input");
+  if (selectedModule === "Kitap") {
+    subjectName.placeholder = "Kitap Adı";
+  } else {
+    subjectName.placeholder = "Konu";
+  }
   subjectName.type = "text";
-  subjectName.placeholder = "Konu";
   subjectName.pattern = "[A-Za-z ]*";
   subjectName.classList.add("subject-name");
 
@@ -66,10 +71,28 @@ const addModal = (addBtn) => {
   const solved = document.createElement("input");
   solved.type = "number";
   solved.min = 0;
-  solved.placeholder = "Çözüldü";
+  if (selectedModule === "Kitap") {
+    solved.placeholder = "Sayfa Sayı";
+  } else {
+    solved.placeholder = "Çözüldü";
+  }
   solved.pattern = "[0-9]*";
   solved.required = true;
   solved.classList.add("solved");
+
+  const correctSolved = document.createElement("input");
+  correctSolved.type = "number";
+  correctSolved.placeholder = "doğru cevaplar";
+  correctSolved.pattern = "[0-9]*";
+  correctSolved.required = true;
+  correctSolved.classList.add("solved");
+
+  const wrongSolved = document.createElement("input");
+  wrongSolved.type = "number";
+  wrongSolved.placeholder = "yanlış cevaplar";
+  wrongSolved.pattern = "[0-9]*";
+  wrongSolved.required = true;
+  wrongSolved.classList.add("solved");
 
   const submit = document.createElement("button");
   submit.textContent = "Ekle";
@@ -82,6 +105,10 @@ const addModal = (addBtn) => {
   modal.appendChild(subjectName);
   modal.appendChild(date);
   modal.appendChild(solved);
+  if (selectedModule !== "Kitap") {
+    modal.appendChild(correctSolved);
+    modal.appendChild(wrongSolved);
+  }
   modal.appendChild(submit);
   modal.appendChild(close);
   body.appendChild(modal);
@@ -94,6 +121,8 @@ const addModal = (addBtn) => {
   let subject = "";
   let tarih = date.value;
   let solvedValue = "";
+  let correctAnswer = 0;
+  let wrongAnswer = 0;
 
   subjectName.addEventListener("input", (e) => {
     subject = e.target.value;
@@ -108,23 +137,55 @@ const addModal = (addBtn) => {
     solvedValue = e.target.value;
   });
 
+  correctSolved.addEventListener("input", (e) => {
+    correctAnswer = e.target.value;
+  });
+
+  wrongSolved.addEventListener("input", (e) => {
+    wrongAnswer = e.target.value;
+  });
+
   submit.addEventListener("click", async () => {
+    submit.disabled = true;
+
     if (!tarih || !solvedValue) {
       alert("Lütfen tüm alanları doldurunuz.");
       return;
     }
 
-    await addActivity(subject, tarih, solvedValue, modal);
+    await addActivity(
+      subject,
+      tarih,
+      solvedValue,
+      correctAnswer,
+      wrongAnswer,
+      modal
+    );
     addBtn.disabled = false;
+    addBtn.innerText = "Ekle";
   });
 };
 
-const addActivity = async (subject, tarih, solvedValue, modalContainer) => {
+const addActivity = async (
+  subject,
+  tarih,
+  solvedValue,
+  correct,
+  wrong,
+  modalContainer
+) => {
   // clear activity container
   activityContainer.innerHTML = "";
 
   // add data to firestore database
-  await createModule(selectedModule, subject, tarih, solvedValue);
+  await createModule(
+    selectedModule,
+    subject,
+    tarih,
+    solvedValue,
+    correct,
+    wrong
+  );
 
   // view data on the screen
   await getAllDataByModule(selectedModule);
@@ -148,7 +209,7 @@ const addActivity = async (subject, tarih, solvedValue, modalContainer) => {
 
   setTimeout(() => {
     body.removeChild(celebrate);
-  }, 2000);
+  }, 1000);
 };
 
 const getAllDataByModule = async (module) => {
@@ -165,7 +226,7 @@ const getAllDataByModule = async (module) => {
     const moduleContainer = document.createElement("div");
     moduleContainer.classList.add("activity-data");
 
-    for (let index = 0; index < 3; index++) {
+    for (let index = 0; index < 5; index++) {
       const data = document.createElement("div");
       data.classList.add("data");
 
@@ -177,8 +238,26 @@ const getAllDataByModule = async (module) => {
       } else if (index == 1) {
         dataValue.textContent = module?.name;
         data.style.width = "20%";
-      } else {
+      } else if (index == 2) {
         dataValue.textContent = module?.solved;
+      } else if (index == 3) {
+        if (
+          module?.correct === undefined ||
+          module?.correct === "" ||
+          module?.correct === 0
+        )
+          continue;
+        dataValue.textContent = module?.correct;
+        dataValue.style.color = "green";
+      } else {
+        if (
+          module?.wrong === undefined ||
+          module?.correct === "" ||
+          module?.correct === 0
+        )
+          continue;
+        dataValue.textContent = module?.wrong;
+        dataValue.style.color = "red";
       }
 
       data.appendChild(dataValue);

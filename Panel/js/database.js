@@ -1,10 +1,10 @@
-import { getAllUsers, deleteUser } from "../firebase/auth.js";
+import { getAllUsers, deleteUser } from "../../firebase/auth.js";
 import {
   collection,
   doc,
   addDoc,
 } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore.js";
-import { db } from "../firebase/firebaseConfig.js";
+import { db } from "../../firebase/firebaseConfig.js";
 
 const admin = JSON.parse(localStorage.getItem("admin"));
 const teacher = JSON.parse(localStorage.getItem("teacher"));

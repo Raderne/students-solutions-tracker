@@ -17,6 +17,7 @@
       rel="stylesheet"
       href="https://unicons.iconscout.com/release/v3.0.6/css/line.css"
     />
+    <link rel="stylesheet" href="studentsObserve.css" />
 
     <script
       src="https://kit.fontawesome.com/2ff2425460.js"
@@ -42,9 +43,9 @@
 
       <ul class="categories list-unstyled">
         <li class="">
-          <a href="studentsObserve.html">
+          <a href="index.html">
             <i class="uil-folder"></i>
-            öğrenci gözlemi
+            Dashboard
           </a>
         </li>
         <li class="">
@@ -68,7 +69,7 @@
       </ul>
     </aside>
 
-    <section id="wrapper">
+    <div id="wrapper">
       <nav class="navbar navbar-expand-md">
         <div class="container-fluid mx-2">
           <div class="navbar-header">
@@ -107,46 +108,58 @@
         </div>
       </nav>
 
-      <div class="p-4">
-        <div class="welcome">
-          <div class="content rounded-3 p-3">
-            <h1 class="fs-3">Hoşgeldiniz, Admin!</h1>
-            <p class="mb-0">Bu panelde öğrencilerinizi yönetebilirsiniz.</p>
-          </div>
-        </div>
+      <div class="students-list">
+        <div class="classes-list">
+          <div class="students-cards"></div>
 
-        <section class="statistics mt-4">
-          <div class="row students-container">
-            <div class="all-students-title">
-              <h1>Tüm Öğrencilerimiz</h1>
-              <div class="filters">
-                <select id="class-filter">
-                  <option value="Hepsi">Sınıflar</option>
-                  <option value="4.Sınıf">4.Sınıf</option>
-                  <option value="5.Sınıf">5.Sınıf</option>
-                  <option value="6.Sınıf">6.Sınıf</option>
-                  <option value="7.Sınıf">7.Sınıf</option>
-                  <option value="8.Sınıf">8.Sınıf</option>
-                </select>
-
-                <select id="branch-filter">
-                  <option value="Hepsi">Şubeler</option>
-                  <option value="Şube A">Şube A</option>
-                  <option value="Şube B">Şube B</option>
-                  <option value="Şube C">Şube C</option>
-                  <option value="Şube D">Şube D</option>
-                  <option value="Şube E">Şube E</option>
-                  <option value="Şube F">Şube F</option>
-                  <option value="Şube G">Şube G</option>
-                </select>
+          <div class="display-results">
+            <div class="students">
+              <div class="student">
+                <!-- <h2>reda el marzouki</h2>
+                <div class="student-details">
+                  <p>Çözümleri Detaylar</p>
+                </div>
+                <p>branch</p>
+                <p class="total">total 20</p> -->
+                <div class="student-details">
+                  <p class="loader">
+                    <i class="fa-solid fa-spinner"></i>
+                  </p>
+                </div>
               </div>
             </div>
-            <div id="allStudents" class="content"></div>
-          </div>
-        </section>
-      </div>
-    </section>
 
+            <ul class="branches">
+              <li class="branch">Şube A</li>
+              <li class="branch">Şube B</li>
+              <li class="branch">Şube C</li>
+              <li class="branch">Şube D</li>
+              <li class="branch">Şube E</li>
+              <li class="branch">Şube F</li>
+              <li class="branch">Şube G</li>
+            </ul>
+          </div>
+        </div>
+        <!-- <div class="students-leader">
+          <button id="refresh">
+            <i class="fa-solid fa-refresh"></i>
+          </button>
+          <h2 class="leaderboard-title">Liderlik Tablosu</h2>
+          <div class="leaderboard-data">
+             <p class="loader">
+              <i class="fa-solid fa-spinner"></i>
+            </p> 
+            <div class="leaderboard-item">
+              <div>
+                <p>${name} ${surname}</p>
+                <p>${className} ${branch}</p>
+              </div>
+              <p>20</p>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
     <footer>
       <div class="">
         <p class="mb-0">
@@ -154,6 +167,19 @@
         </p>
       </div>
     </footer>
+
+    <div class="modal-wrapper">
+      <div id="student-modal">
+        <span class="close"> X </span>
+        <h1 id="student_name">Loading...</h1>
+        <h3 id="student_className"></h3>
+        <div class="all-student-data">
+          <div class="">
+            <i class="fa-solid fa-spinner loader"></i>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script src="js/scriptAdmin.js"></script>
     <!-- Jquery -->
@@ -164,6 +190,6 @@
     ></script>
 
     <!-- Bootstrap JS -->
-    <script type="module" src="js/database.js"></script>
+    <script type="module" src="js/studentsObserve.js"></script>
   </body>
 </html>

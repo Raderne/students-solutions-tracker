@@ -17,7 +17,14 @@ if (!user) {
 }
 const currentUser = JSON.parse(user);
 
-export const createModule = async (module, subject, tarih, solved) => {
+export const createModule = async (
+  module,
+  subject,
+  tarih,
+  solved,
+  correct = "",
+  wrong = ""
+) => {
   if (!currentUser || !module || !tarih || !solved) {
     alert("Lütfen tüm alanları doldurunuz.");
     return;
@@ -31,6 +38,8 @@ export const createModule = async (module, subject, tarih, solved) => {
       name: subject,
       tarih: tarih,
       solved: solved,
+      correct: correct,
+      wrong: wrong,
     });
   } catch (error) {
     console.log("module creation", error.message);
