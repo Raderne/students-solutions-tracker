@@ -5,10 +5,10 @@ if (!user) {
 const currentUser = JSON.parse(user);
 
 const body = document.querySelector("body"),
-  modeToggle = body.querySelector(".mode-toggle");
-sidebar = body.querySelector("nav");
-sidebarToggle = body.querySelector(".sidebar-toggle");
-mainContent = body.querySelector(".main");
+  modeToggle = body.querySelector(".mode-toggle"),
+  sidebar = body.querySelector("nav"),
+  sidebarToggle = body.querySelector(".sidebar-toggle"),
+  mainContent = body.querySelector(".main");
 
 const logoutBtn = document.getElementById("logout-btn");
 
@@ -25,8 +25,7 @@ if (getMode && getMode === "dark") {
 let getStatus = localStorage.getItem("status");
 if (getStatus && getStatus === "close") {
   sidebar.classList.toggle("close");
-  mainContent.style.marginLeft = "0";
-  mainContent.style.width = "100%";
+  updateMainContentStyle();
 }
 
 modeToggle.addEventListener("click", () => {
@@ -42,16 +41,33 @@ sidebarToggle.addEventListener("click", () => {
   sidebar.classList.toggle("close");
   if (sidebar.classList.contains("close")) {
     localStorage.setItem("status", "close");
-    mainContent.style.marginLeft = "0";
-    mainContent.style.width = "100%";
   } else {
     localStorage.setItem("status", "open");
-    mainContent.style.marginLeft = "250px";
-    mainContent.style.width = "calc(100% - 250px)";
   }
+  updateMainContentStyle();
 });
 
 logoutBtn.addEventListener("click", () => {
   localStorage.removeItem("user");
   window.location.href = "./index.html";
 });
+
+// Define the media query for mobile screens
+const mediaQuery = window.matchMedia("(max-width: 1000px)");
+
+// Function to update main content style based on media query match
+function updateMainContentStyle() {
+  if (sidebar.classList.contains("close") || mediaQuery.matches) {
+    mainContent.style.marginLeft = "0";
+    mainContent.style.width = "100%";
+  } else {
+    mainContent.style.marginLeft = "250px";
+    mainContent.style.width = "calc(100% - 250px)";
+  }
+}
+
+// Attach listener to media query to handle changes
+mediaQuery.addEventListener("change", updateMainContentStyle);
+
+// Initial call to set the correct style on page load
+updateMainContentStyle();

@@ -565,4 +565,216 @@ footer {
   align-items: center;
   padding: 20px 0;
   margin-left: var(--sidebar-width);
+  background-color: var(--panel-color);
+  color: var(--text-color);
+}
+
+/*---------------media--------------------*/
+@media (max-width: 1000px) {
+  nav {
+    width: 76px;
+  }
+  nav.close {
+    width: 250px;
+  }
+  nav ~ .main {
+    overflow-x: hidden;
+  }
+  nav .logo_name {
+    pointer-events: none;
+  }
+  nav .logo-name .logo_name {
+    font-size: 14px;
+  }
+
+  nav .logo_subtitle {
+    opacity: 0;
+    pointer-events: none;
+  }
+  nav.close .logo_subtitle {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  nav.close .logo_name {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  nav li a .link-name {
+    opacity: 0;
+    pointer-events: none;
+  }
+  nav.close li a .link-name {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  nav ~ .main {
+    left: 68px;
+    width: calc(100% - 73px);
+  }
+  nav.close ~ .main {
+    left: 250px;
+    width: calc(100% - 250px);
+  }
+  nav ~ .main .top {
+    left: 73px;
+    width: calc(100% - 73px);
+  }
+  nav.close ~ .main .top {
+    left: 250px;
+    width: calc(100% - 250px);
+  }
+  .navigation ul {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .navigation ul span {
+    opacity: 1;
+  }
+
+  .activity {
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #logout-btn {
+    position: absolute;
+    top: 31rem;
+    left: 4px;
+  }
+  /*  .activity .activity-data {
+    overflow-x: scroll;
+  } */
+}
+@media (max-width: 768px) {
+  nav.close ~ .main {
+    left: 0;
+    width: calc(100% - 73px);
+    overflow-x: hidden;
+  }
+}
+@media (max-width: 412px) {
+  nav {
+    height: 86%;
+  }
+  nav ~ .main .navigation {
+    position: absolute;
+    top: 1%;
+    right: 1%;
+  }
+
+  nav.close ~ .main .navigation {
+    position: absolute;
+    top: 1%;
+    right: -14%;
+  }
+  .navigation ul span {
+    display: none;
+  }
+  .navigation .messagesBox .messages {
+    position: absolute;
+    top: 130%;
+    right: -9rem;
+    background-color: var(--box3-color);
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+    padding: 5px 10px;
+    font-size: 1rem;
+    border-radius: 10px;
+    z-index: 999;
+    display: none;
+    transition: all 0.2s ease-in-out;
+    width: 250px;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  .main .navigation .messagesBox .messages {
+    right: -9rem;
+    min-width: 200px;
+  }
+  footer p {
+    margin-left: 11px;
+    text-align: center;
+  }
+  /* .activity .add-activity .title button{
+    margin-right: 1%;
+  } */
+  #modal {
+    position: fixed;
+    z-index: 999;
+    right: 17%;
+    top: 11%;
+    width: 328px;
+    height: fit-content;
+    overflow: auto;
+    background-color: var(--modal-color);
+    color: var(--panel-color);
+    display: flex;
+    flex-direction: column;
+    align-items: self-start;
+    padding: 30px 40px;
+    border-radius: 20px;
+  }
+}
+@media (max-width: 400px) {
+  nav {
+    width: 0px;
+  }
+  nav.close {
+    width: 73px;
+  }
+  nav .logo_name {
+    opacity: 0;
+    pointer-events: none;
+  }
+  nav.close .logo_name {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  nav .logo_subtitle {
+    opacity: 0;
+    pointer-events: none;
+  }
+  nav.close .logo_subtitle {
+    opacity: 0;
+    pointer-events: none;
+  }
+  nav li a .link-name {
+    opacity: 0;
+    pointer-events: none;
+  }
+  nav.close li a .link-name {
+    opacity: 0;
+    pointer-events: none;
+  }
+  nav ~ .main {
+    left: 0;
+    width: 100%;
+  }
+  nav.close ~ .main {
+    left: 73px;
+    width: calc(100% - 73px);
+  }
+  nav ~ .main .top {
+    left: 0;
+    width: 100%;
+  }
+  nav.close ~ .main .top {
+    left: 0;
+    width: 100%;
+  }
+  .messagesBox span {
+    opacity: 0;
+  }
+  .messagesBox i {
+    position: absolute;
+    left: 15rem;
+  }
+  .mode-toggle .switch {
+    position: absolute;
+    left: 18rem;
+    top: 14px;
+  }
 }

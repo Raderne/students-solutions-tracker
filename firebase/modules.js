@@ -17,30 +17,75 @@ const subeName = document.getElementById("subeName");
 
 let selectedModule = "Matematik";
 
+const moduleImage = [
+  "./assets/images/calculating.png",
+  "./assets/images/fizik.png",
+  "./assets/images/alchemy.png",
+  "./assets/images/dna.png",
+  "./assets/images/languages.png",
+  "./assets/images/text-books.png",
+  "./assets/images/book.png",
+];
+
 document.addEventListener("DOMContentLoaded", async () => {
   await getAllDataByModule(selectedModule);
   moduleName.textContent = selectedModule;
   subeName.textContent = currentUser?.branchName;
 
-  modules.forEach((module) => {
+  modules.forEach((module, index) => {
     const li = document.createElement("li");
+
+    const img = document.createElement("img");
+    img.src = moduleImage[index];
+    img.alt = module;
+
     const span = document.createElement("span");
     span.classList.add("link-name");
     span.textContent = module;
+    li.style.display = "flex";
+    li.style.alignItems = "center";
+    li.style.gap = "10px";
+    img.style.cursor = "pointer";
+    li.appendChild(img);
     li.appendChild(span);
+
     modileLinks.appendChild(li);
 
-    span.addEventListener("click", async () => {
+    const clickHandler = async () => {
       if (selectedModule === module) return;
-
       selectedModule = module;
       moduleName.textContent = module;
-
       activityContainer.innerHTML = "";
       await getAllDataByModule(selectedModule);
-    });
-  });
+      moduleImageContainer.innerHTML = "";
+      const selectedImg = document.createElement("img");
+      selectedImg.src = moduleImage[index];
+      selectedImg.alt = module;
+      moduleImageContainer.appendChild(selectedImg);
+    };
 
+    span.addEventListener("click", clickHandler);
+    img.addEventListener("click", clickHandler);
+  });
+  const style = document.createElement("style");
+  style.textContent = `
+      @media (max-width: 400px) {
+          .link-name {
+              opacity: 0;
+          }
+      }
+  `;
+  document.head.appendChild(style);
+
+  const style2 = document.createElement("style");
+  style.textContent = `
+      @media (max-width: 1000px) {
+          .link-name {
+              opacity: 0;
+          }
+      }
+  `;
+  document.head.appendChild(style2);
   addTextBtn.addEventListener("click", () => {
     addTextBtn.disabled = true;
     addModal(addTextBtn);
