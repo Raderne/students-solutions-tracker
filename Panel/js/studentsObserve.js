@@ -69,10 +69,10 @@ const displayStudentDetails = async (studentId) => {
               <p style="width: 20%; word-wrap: break-word;">${name}</p>
               <p style="width: 20%;">${solved} Çözülmüş</p>
               <p style="color: green; width: 15%;">${
-                correct !== 0 ? correct + " Doğru" : "YOK"
+                correct !== 0 || correct !== "" ? correct + " Doğru" : "YOK"
               }</p>
               <p style="color: red; width: 15%;">${
-                wrong !== 0 ? wrong + " Yanlış" : "YOK"
+                wrong !== 0 || wrong !== "" ? wrong + " Yanlış" : "YOK"
               }</p>
             </div>
         `;

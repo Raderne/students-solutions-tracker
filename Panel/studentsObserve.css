@@ -95,6 +95,11 @@ p {
   align-items: center;
 }
 
+.classes-list .display-results .students .student h2 {
+  font-size: 1.8rem;
+  word-break: break-all;
+}
+
 .classes-list .display-results .students .student .student-details {
   background-color: #b6b5b5;
   padding: 5px 10px;

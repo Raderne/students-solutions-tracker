@@ -22,8 +22,8 @@ export const createModule = async (
   subject,
   tarih,
   solved,
-  correct = "",
-  wrong = ""
+  correct = 0,
+  wrong = 0
 ) => {
   if (!currentUser || !module || !tarih || !solved) {
     alert("Lütfen tüm alanları doldurunuz.");
