@@ -122,6 +122,9 @@ export const getStudentsTotalScoreLeaderBoard = async (
 
         await Promise.all(
           Subjects.map(async (subject) => {
+            if (subject === "Kitap") {
+              return;
+            }
             const moduleRef = collection(docRef, userId, subject);
             const snapshot = await getDocs(moduleRef);
             if (snapshot.empty) {

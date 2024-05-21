@@ -296,6 +296,7 @@ nav.close ~ .main .top {
 .activity .leaderboard .leaderbord-branch {
   overflow-y: auto;
   height: 250px;
+  min-height: 180px;
 }
 
 .activity .leaderboard #refresh {

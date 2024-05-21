@@ -1,8 +1,8 @@
 export const modules = [
   "Matematik",
-  "Fizik",
-  "Kimya",
-  "Biyoloji",
+  "Fen Bilimleri",
+  "Yabancı Dil (İngilizce)",
+  "Din Kültürü",
   "Türkçe",
   "Tarih",
   "Kitap",
